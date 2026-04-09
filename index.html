@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenClaw AI Agents Guidebook</title>
+  <style>
+    :root {
+      --bg: #edf3f9;
+      --paper: #ffffff;
+      --ink: #1a2633;
+      --muted: #607184;
+      --brand: #0f5ea8;
+      --brand2: #2f7fc8;
+      --line: #d8e3ef;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: radial-gradient(circle at top, #f8fbfe 0%, #edf3f9 45%, #e6eef6 100%);
+      color: var(--ink);
+    }
+    .shell {
+      max-width: 920px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 18px 50px rgba(13, 45, 79, 0.08);
+      overflow: hidden;
+    }
+    .hero {
+      padding: 48px 44px;
+      background: linear-gradient(135deg, #0f5ea8 0%, #2f7fc8 100%);
+      color: white;
+    }
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: 2.4rem;
+      line-height: 1.12;
+    }
+    .hero p {
+      margin: 0;
+      max-width: 720px;
+      color: rgba(255,255,255,0.92);
+      font-size: 1.05rem;
+      line-height: 1.65;
+    }
+    .body {
+      padding: 34px 44px 44px;
+    }
+    h2 {
+      color: var(--brand);
+      margin: 0 0 14px;
+    }
+    p {
+      line-height: 1.7;
+      margin: 10px 0 16px;
+    }
+    ul {
+      margin: 0 0 22px 22px;
+      line-height: 1.7;
+    }
+    .actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 24px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 13px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid var(--line);
+    }
+    .btn.primary {
+      background: var(--brand);
+      color: white;
+      border-color: var(--brand);
+    }
+    .meta {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="card">
+      <div class="hero">
+        <h1>OpenClaw AI Agents Guidebook</h1>
+        <p>A practical handbook for designing, building, testing, and deploying AI agents and chatbots in OpenClaw, based on real agent builds including the Research Scout, Marketing AI Tutor, Culinary Agent, and custom website chatbot projects.</p>
+      </div>
+      <div class="body">
+        <h2>What this includes</h2>
+        <ul>
+          <li>How to structure a native OpenClaw agent workspace</li>
+          <li>How to define persona, scope, commands, and boundaries</li>
+          <li>How to handle memory, heartbeats, and multi-agent routing</li>
+          <li>How to deploy staff-facing agents through OpenClaw channels</li>
+          <li>How to approach external website chatbots separately when needed</li>
+        </ul>
+        <p>This site is intentionally minimal so it deploys cleanly on GitHub and Vercel without a build step.</p>
+        <div class="actions">
+          <a class="btn primary" href="guidebook.html">Open the Full Guidebook</a>
+        </div>
+        <p class="meta">Static site. No framework required. Vercel-ready.</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
