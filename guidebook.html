@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenClaw AI Agents Guidebook</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --paper: #ffffff;
+      --ink: #182433;
+      --muted: #5b6b7f;
+      --line: #d8e1ec;
+      --brand: #0f5ea8;
+      --brand-2: #2d7cc4;
+      --accent: #dbeaf8;
+      --code-bg: #f0f4f8;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #eaf1f8 0%, #f6f9fc 100%);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.65;
+    }
+    .wrap {
+      max-width: 900px;
+      margin: 32px auto;
+      padding: 0 20px;
+    }
+    .doc {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 18px 50px rgba(19, 46, 77, 0.08);
+      overflow: hidden;
+    }
+    header {
+      padding: 40px 44px 28px;
+      background: linear-gradient(135deg, #0f5ea8 0%, #2a78bf 100%);
+      color: #fff;
+    }
+    header h1 {
+      margin: 0 0 10px;
+      font-size: 2.3rem;
+      line-height: 1.15;
+    }
+    header p {
+      margin: 0;
+      max-width: 720px;
+      color: rgba(255,255,255,0.92);
+      font-size: 1.04rem;
+    }
+    main {
+      padding: 34px 44px 48px;
+    }
+    h2 {
+      margin: 36px 0 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--accent);
+      color: var(--brand);
+      font-size: 1.5rem;
+    }
+    h3 {
+      margin: 26px 0 10px;
+      color: #173a63;
+      font-size: 1.16rem;
+    }
+    h4 {
+      margin: 18px 0 8px;
+      font-size: 1rem;
+      color: #284865;
+    }
+    p { margin: 10px 0; }
+    ul, ol {
+      margin: 10px 0 14px 24px;
+    }
+    li { margin: 4px 0; }
+    code {
+      background: var(--code-bg);
+      border: 1px solid #dfe7ef;
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-family: "Courier New", monospace;
+      font-size: 0.95em;
+    }
+    pre {
+      background: #0f1c2b;
+      color: #eef5ff;
+      padding: 16px 18px;
+      border-radius: 12px;
+      overflow-x: auto;
+      font-size: 0.95rem;
+      line-height: 1.55;
+    }
+    pre code {
+      background: transparent;
+      border: 0;
+      color: inherit;
+      padding: 0;
+    }
+    blockquote {
+      margin: 14px 0;
+      padding: 10px 16px;
+      border-left: 4px solid var(--brand-2);
+      background: #f5f9fd;
+      color: #27435f;
+    }
+    .note {
+      margin: 16px 0;
+      padding: 14px 16px;
+      background: #f5f9fd;
+      border: 1px solid #d6e5f2;
+      border-radius: 12px;
+    }
+    @media print {
+      body { background: #fff; }
+      .wrap { max-width: none; margin: 0; padding: 0; }
+      .doc { border: 0; box-shadow: none; border-radius: 0; }
+      header, main { padding-left: 28px; padding-right: 28px; }
+      h2 { break-after: avoid; }
+      h3, h4 { break-after: avoid; }
+      pre, blockquote { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="doc">
+      <header>
+        <h1>OpenClaw AI Agents Guidebook</h1>
+        <p>A practical step-by-step handbook for designing, building, testing, and deploying AI agents and chatbots in OpenClaw, based on the agents and chatbot projects already built in this workspace.</p>
+      </header>
+      <main>
+        <p>This guide is grounded in four real reference patterns:</p>
+        <ul>
+          <li><strong>1-Group AI Research Scout</strong>: an internal research and briefing agent built natively in OpenClaw</li>
+          <li><strong>1-Group Marketing AI Tutor</strong>: a training and daily co-pilot agent built natively in OpenClaw</li>
+          <li><strong>1-Group Culinary Agent</strong>: a specialist domain agent for chefs and kitchen operations built natively in OpenClaw</li>
+          <li><strong>Gojo / Max chatbot projects</strong>: custom website chatbots built outside native OpenClaw channels, with OpenClaw used as the design and development environment</li>
+        </ul>
+        <p>The goal of this handbook is simple: give you a repeatable operating method for developing and deploying useful AI agents in OpenClaw without falling into generic prompt sludge, weak scope control, or messy deployment.</p>
+
+        <h2>1. What OpenClaw Is</h2>
+        <p>OpenClaw is an agent runtime and gateway system. It is not just a chat UI.</p>
+        <p>In practice, OpenClaw combines:</p>
+        <ul>
+          <li><strong>A workspace</strong>: the files that define how the agent behaves</li>
+          <li><strong>A gateway</strong>: the always-on service that runs the agent and handles channels</li>
+          <li><strong>Channels</strong>: the surfaces where users interact with the agent, such as webchat, Telegram, WhatsApp, Discord, and others</li>
+          <li><strong>Sessions</strong>: conversation state and routing context</li>
+          <li><strong>Tools</strong>: capabilities such as file access, browser control, web search, messaging, cron, and node/device integration</li>
+          <li><strong>Automation</strong>: heartbeat rules and cron jobs for recurring work</li>
+        </ul>
+        <p><strong>The quality of the agent depends heavily on the quality of its workspace design.</strong></p>
+
+        <h2>2. The Two Main Build Paths</h2>
+        <h3>Path A: Native OpenClaw Agent</h3>
+        <p>Use this when the agent will run directly inside OpenClaw and reply through OpenClaw channels.</p>
+        <p>Examples from your builds: Research Scout, Marketing AI Tutor, Culinary Agent.</p>
+        <p>Best for internal assistants, research agents, operational copilots, training bots, staff-facing specialists, and recurring briefing agents.</p>
+
+        <h3>Path B: External Website Chatbot</h3>
+        <p>Use this when the chatbot lives on a custom website or app, and OpenClaw is mainly being used as the design environment, coding environment, or systems thinking framework.</p>
+        <p>Examples from your builds: Gojo chatbot and Max's anime site chat widget.</p>
+
+        <h2>3. Start With Agent Design, Not Config</h2>
+        <p>Every strong agent you have built so far started with a clear concept before any deployment work.</p>
+        <ul>
+          <li><strong>Purpose</strong>: what the agent exists to do</li>
+          <li><strong>Audience</strong>: who it serves</li>
+          <li><strong>Scope</strong>: what it covers and what it does not cover</li>
+          <li><strong>Personality</strong>: how it should sound</li>
+          <li><strong>Boundaries</strong>: what it must never do</li>
+          <li><strong>Success metric</strong>: how you will know it is working</li>
+        </ul>
+
+        <h3>Example: Research Scout</h3>
+        <ul>
+          <li>Purpose: research and assess AI tools</li>
+          <li>Audience: 1-Group digital transformation / innovation team</li>
+          <li>Scope: practical AI tools across business functions</li>
+          <li>Boundaries: no hype, no commitments, no pretending committee decisions happened in chat</li>
+          <li>Success metric: useful daily briefings and credible evaluations that the team actually uses</li>
+        </ul>
+
+        <h3>Example: Marketing AI Tutor</h3>
+        <ul>
+          <li>Purpose: training companion plus daily marketing co-pilot</li>
+          <li>Audience: marketing team, managers, and team leads</li>
+          <li>Scope: content, prompts, tool guidance, quizzes, scenario practice, ops coordination</li>
+          <li>Boundaries: no budgets, no ready-to-post claims, no cross-venue strategy leakage</li>
+          <li>Success metric: daily usage, better content output, faster AI skill uptake</li>
+        </ul>
+
+        <h3>Example: Culinary Agent</h3>
+        <ul>
+          <li>P
+...(truncated)...
